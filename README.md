@@ -25,20 +25,20 @@ Table to be transferred:
 - sales
 # Instructions
 
-1. Build and deploy Postgres DBs
+## 1. Build and deploy Postgres DBs
 
 In psql-origin/, run "docker build -t psqlairflow-db-origin:latest" 
 In psql-dest/, run "docker build -t psqlairflow-db-dest:latest" 
 
 In root folder, run "docker compose up"
 
-To verify that the initial setup is sucessful:
+### To verify that the initial setup is sucessful:
 - Connect to sales_db at postgres://localhost:7654 and run "SELECT * FROM sales;"
     - 2 records with IDs 0 and 1 should be displayed
 - Connect to other-postgres-db at postgres://localhost:6543 and run "/dt;"
     - No table named sales should exist
 
-2. Build and deploy Airflow, set up connections
+## 2. Build and deploy Airflow, set up connections
 
 - In airflow/, run "docker compose up", then connect and login to Airflow at http://localhost:5884
     - User: airflow, Password: airflow
@@ -49,11 +49,11 @@ To verify that the initial setup is sucessful:
 - Reload Airflow by running "docker compose down" followed by "docker compose up" in airflow/
     - This is to ensure that psql-copy-dag.py loads properly
 
-3. Run the Airflow data pipeline
+## 3. Run the Airflow data pipeline
 
 - Run psql-copy in Airflow, no additional parameters required
 
-To verify that the pipeline is sucessful:
+### To verify that the pipeline is sucessful:
 - Connect to sales_db at postgres://localhost:7654 and run "SELECT * FROM sales;"
     - 2 records with IDs 0 and 1 should be displayed
 - Connect to other-postgres-db at postgres://localhost:6543 and run "SELECT * FROM sales;"
