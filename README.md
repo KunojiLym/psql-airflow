@@ -1,23 +1,23 @@
 # psql-airflow
- Demo of transferring PSQL database between Docker containers.
+ Demo of transferring PSQL database between Docker containers. Assumes that user is running Linux and has Docker 20.04 or above installed
 
 # Setup
 
-Properties for source Postgres DB:
+## 1. Properties for source Postgres DB:
 - Location: psql-origin
 - Username: postgres-user
 - Password: postgres-passwd
 - Database (source): sales_db
 - Port: 7654
 
-Properties for destination Postgres DB:
+## 2. Properties for destination Postgres DB:
 - Location: psql-dest
 - Username: other-postgres-user
 - Password: other-postgres-passwd
 - Database (destination): other-postgres-db
 - Port: 6543
 
-Properties for Airflow:
+## 3. Properties for Airflow:
 - Username: airflow
 - Password: airflow
 
@@ -27,10 +27,10 @@ Table to be transferred:
 
 ## 1. Build and deploy Postgres DBs
 
-In psql-origin/, run "docker build -t psqlairflow-db-origin:latest" 
-In psql-dest/, run "docker build -t psqlairflow-db-dest:latest" 
+- In psql-origin/, run "docker build -t psqlairflow-db-origin:latest" 
+- In psql-dest/, run "docker build -t psqlairflow-db-dest:latest" 
 
-In root folder, run "docker compose up"
+- In root folder, run "docker compose up"
 
 ### To verify that the initial setup is sucessful:
 - Connect to sales_db at postgres://localhost:7654 and run "SELECT * FROM sales;"
@@ -40,13 +40,14 @@ In root folder, run "docker compose up"
 
 ## 2. Build and deploy Airflow, set up connections
 
-- In airflow/, run "docker compose up", then connect and login to Airflow at http://localhost:5884
+- In airflow/, run "docker compose up --add-host=host.docker.internal:host-gateway", then connect and login to Airflow at http://localhost:5884
     - User: airflow, Password: airflow
+    - host.docker.internal is needed to communicate with the host machine for the Docker container
 - Navigate to Admin -> Connections
 - Create 2 connections as follows:
     - {Conn Id: psql_origin, Conn Type: postgres, Host: host.docker.internal, Port: 7654, Login: postgres-user, Password: postgres-passwd, dbname: sales_db}
     - {Conn Id: psql_dest, Conn Type: postgres, Host: host.docker.internal, Port: 6543, Login: other-postgres-user, Password: other-postgres-passwd, dbname: other-postgres-db}
-- Reload Airflow by running "docker compose down" followed by "docker compose up" in airflow/
+- Reload Airflow by running "docker compose down" followed by "docker compose up --add-host=host.docker.internal:host-gateway" in airflow/
     - This is to ensure that psql-copy-dag.py loads properly
 
 ## 3. Run the Airflow data pipeline
