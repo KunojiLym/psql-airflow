@@ -1,4 +1,4 @@
-version: '3.8'
+version: '1'
 
 services:
 
@@ -9,7 +9,9 @@ services:
       POSTGRES_PASSWORD: postgres-passwd
       POSTGRES_DB: postgres-db
     ports:
-      - 5432:5432
+      - 7654:5432
+    networks:
+      - db-origin-net
     volumes: 
       - /var/lib/postgresql/origin
 
@@ -21,5 +23,11 @@ services:
       POSTGRES_DB: other-postgres-db
     ports:
       - 6543:5432
+    networks:
+      - db-dest-net
     volumes: 
       - /var/lib/postgresql/dest
+
+networks:
+  db-origin-net: {}
+  db-dest-net: {}
