@@ -11,19 +11,15 @@ services:
     ports:
       - 5432:5432
     volumes: 
-      - db-origin-vol: /var/lib/postgresql/data/origin
+      - /var/lib/postgresql/origin
 
-    db-dest:
-      image: psqlairflow-db-dest:latest
-      environment:
-        POSTGRES_USER: other-postgres-user
-        POSTGRES_PASSWORD: other-postgres-passwd
-        POSTGRES_DB: other-postgres-db
-      ports:
-        - 6543:5432
-      volumes: 
-        - db-dest-vol: /var/lib/postgresql/data/dest
-
-volumes:
-  db-origin-vol: #
-  db-dest-vol: #
+  db-dest:
+    image: psqlairflow-db-dest:latest
+    environment:
+      POSTGRES_USER: other-postgres-user
+      POSTGRES_PASSWORD: other-postgres-passwd
+      POSTGRES_DB: other-postgres-db
+    ports:
+      - 6543:5432
+    volumes: 
+      - /var/lib/postgresql/dest
