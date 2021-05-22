@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+
+  db-origin:
+    image: psqlairflow-db-origin:latest
+    environment:
+      POSTGRES_USER: postgres-user
+      POSTGRES_PASSWORD: postgres-passwd
+      POSTGRES_DB: postgres-db
+    ports:
+      - 5432:5432
+    volumes: 
+      - db-origin-vol: /var/lib/postgresql/data/origin
+
+    db-dest:
+      image: psqlairflow-db-dest:latest
+      environment:
+        POSTGRES_USER: other-postgres-user
+        POSTGRES_PASSWORD: other-postgres-passwd
+        POSTGRES_DB: other-postgres-db
+      ports:
+        - 6543:5432
+      volumes: 
+        - db-dest-vol: /var/lib/postgresql/data/dest
+
+volumes:
+  db-origin-vol: #
+  db-dest-vol: #
