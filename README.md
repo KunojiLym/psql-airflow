@@ -40,7 +40,7 @@ Table to be transferred:
 
 ## 2. Build and deploy Airflow, set up connections
 
-- In airflow/, run "docker compose up --add-host=host.docker.internal:host-gateway", then connect and login to Airflow at http://localhost:5884
+- In airflow/, run "docker-compose up airflow-init", followed by "docker compose up --add-host=host.docker.internal:host-gateway", then connect and login to Airflow at http://localhost:5884
     - User: airflow, Password: airflow
     - host.docker.internal is needed to communicate with the host machine for the Docker container
 - Navigate to Admin -> Connections
