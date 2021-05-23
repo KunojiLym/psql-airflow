@@ -31,9 +31,7 @@ Run deploy.sh *OR* do the following:
 
 - In psql-origin/, run "docker build -t psqlairflow-db-origin:latest" 
 - In psql-dest/, run "docker build -t psqlairflow-db-dest:latest" 
-
 - In root folder, run "docker compose up"
-
 - In airflow/, run "docker-compose up airflow-init", followed by "docker compose up --add-host=host.docker.internal:host-gateway"
     - host.docker.internal is needed to communicate with the host machine for the Docker container
 
