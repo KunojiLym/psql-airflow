@@ -1,0 +1,9 @@
+{
+  "conn_type": "postgres",
+  "connection_id": "psql_dest",
+  "host": "host.docker.internal",
+  "login": "other-postgres-user",
+  "password": "other-postgres-passwd",
+  "port": 6543,
+  "dbname": "other-postgres-db"
+}

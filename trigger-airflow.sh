@@ -1,0 +1,1 @@
+curl --user airflow:airflow -H "Content-Type: application/json" -X POST http://localhost:5884/api/v1/dags/psql-copy/dagRuns

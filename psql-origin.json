@@ -1,0 +1,9 @@
+{
+  "conn_type": "postgres",
+  "connection_id": "psql_origin",
+  "host": "host.docker.internal",
+  "login": "postgres-user",
+  "password": "postgres-passwd",
+  "port": 7654,
+  "dbname": "sales_db"
+}
