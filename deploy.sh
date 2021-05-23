@@ -1,6 +1,6 @@
-# 1. Build and deploy Postgres DBs as a Docker stack
-docker build -f psql-origin/Dockerfile -t psqlairflow-db-origin:latest
-docker build -f psql-dest/Dockerfile -t psqlairflow-db-dest:latest
+#!/usr/bin/env bash
+
+# 1. Deploy Postgres DBs as a Docker stack
 docker compose up --detach
 
 # 2. Build and deploy Airflow

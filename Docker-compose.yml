@@ -3,7 +3,7 @@ version: '1'
 services:
 
   db-origin:
-    image: psqlairflow-db-origin:latest
+    image: yzouyang/psqlairflow-db-origin:latest
     environment:
       POSTGRES_USER: postgres-user
       POSTGRES_PASSWORD: postgres-passwd
@@ -16,7 +16,7 @@ services:
       - /var/lib/postgresql/origin
 
   db-dest:
-    image: psqlairflow-db-dest:latest
+    image: yzouyang/psqlairflow-db-dest:latest
     environment:
       POSTGRES_USER: other-postgres-user
       POSTGRES_PASSWORD: other-postgres-passwd

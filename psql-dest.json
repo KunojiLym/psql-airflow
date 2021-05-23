@@ -5,5 +5,5 @@
   "login": "other-postgres-user",
   "password": "other-postgres-passwd",
   "port": 6543,
-  "dbname": "other-postgres-db"
+  "extra": "{\"dbname\": \"other-postgres-db\"}"
 }
