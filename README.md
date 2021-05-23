@@ -34,9 +34,7 @@ Run build.sh *OR* do the following:
 Run deploy.sh *OR* do the following:
 
 - In root folder, run "docker compose up"
-- In airflow/, run "docker-compose up airflow-init", followed by "docker compose up --add-host=host.docker.internal:host-gateway"
-    - host.docker.internal is needed to communicate with the host machine for the Docker container
-    - if on Windows or Mac machine, do not included "--add-host=host.docker.internal:host-gateway"; this flag is only necessary for Linux
+- In airflow/, run "docker-compose up airflow-init", followed by "docker compose up"
 ### To verify that the initial DB setup is sucessful:
 - Connect to sales_db at postgres://localhost:7654 and run "SELECT * FROM sales;"
     - 2 records with IDs 0 and 1 should be displayed

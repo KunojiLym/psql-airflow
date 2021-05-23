@@ -6,4 +6,4 @@ curl --user airflow:airflow -d @psql-dest.json -H "Content-Type: application/jso
 
 # 2.2 Reload Airflow
 sudo docker compose -f airflow/docker-compose.yaml down
-sudo docker compose -f airflow/docker-compose.yaml up --add-host=host.docker.internal:host-gateway --detach
+sudo docker compose -f airflow/docker-compose.yaml up --detach
