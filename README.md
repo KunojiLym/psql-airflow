@@ -30,9 +30,12 @@ Run build.sh *OR* do the following:
 
 - In psql-origin/, run "docker build -t psqlairflow-db-origin:latest" 
 - In psql-dest/, run "docker build -t psqlairflow-db-dest:latest" 
+<<<<<<< HEAD
 ## 2. Deploy Postgres DBs and Airflow
 Run deploy.sh *OR* do the following:
 
+=======
+>>>>>>> 91f665f56b76d917a21b0c986ce0f8bb4c948d21
 - In root folder, run "docker compose up"
 - In airflow/, run "docker-compose up airflow-init", followed by "docker compose up --add-host=host.docker.internal:host-gateway"
     - host.docker.internal is needed to communicate with the host machine for the Docker container
