@@ -41,8 +41,7 @@ def transfer_psql():
     src_conn = src.get_conn()
     src_cursor = src_conn.cursor()
     dest_conn = dest.get_conn()
-    dest_cursor = dest_conn.cursor()
-
+   
     ## takes all records from source and insert into destination
     src_cursor.execute("SELECT * FROM sales;")
     dest.insert_rows(table="sales", rows=src_cursor)
